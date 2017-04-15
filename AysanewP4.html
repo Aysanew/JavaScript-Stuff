@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+<script>
+    
+    function getNumber(num)
+    { 
+        while (true) {
+            num = Number(prompt("Enter an unsigned base 10 number:"));
+            if (num >= 0) {
+                break;
+            }
+        }
+        
+        return num;
+    }
+    
+    function buildArray(array, num)
+    {
+        
+        array.push(num);
+        
+        
+    }
+    
+    function getBase(base)
+    {
+        var basetype;
+        
+        
+        while (true) {
+            base = prompt("Enter b for binary, o for octal, or h for hexadecimal:");
+            
+            switch(base) {
+                case "b":
+                case "B":
+                        basetype = 2;
+                break;
+                case "o":
+                case "O":
+                        basetype = 8;
+                        break;
+                case "h":
+                case "H":
+                        basetype = 16;
+                        break;
+                default:
+                        continue;
+            }
+            
+            break;
+        }    
+            
+        
+        return basetype;
+    }
+    
+    function baseConversion(num,base)
+    {
+            var remainder = 0, rArray = [];
+            
+            do {
+                
+                if (num > 0) {
+                    
+                    remainder = num % base;
+                        
+                        if (remainder >= 10) {
+                            
+                            switch(remainder) {
+                                case 10:
+                                    remainder = "A";
+                                    break;
+                                case 11:
+                                    remainder = "B";
+                                    break;
+                                case 12:
+                                    remainder = "C";
+                                    break;
+                                case 13:
+                                    remainder = "D";
+                                    break;
+                                case 14:
+                                    remainder = "E";
+                                    break;
+                                case 15:
+                                    remainder = "F";
+                                    break;
+                                default:
+                                    break;
+                            }   
+                        }
+                
+                
+                    rArray.push(remainder);
+                    num = num / base;
+                    num = Math.floor(num);   
+            
+                }
+                
+                else {
+                    
+                    break;
+            
+                }
+                
+            } while (true);
+            
+            
+            return rArray;
+    }
+    
+    function reverseArray(rev)
+    {
+            var str1 = "";
+             
+            for (i = rev.length; i > 0; i--) {
+                str1 = str1 + rev.pop();
+            }
+            
+            return str1;
+    }
+    
+    function myMax(array)
+    {
+            array.sort(function(a, b){return a - b;});
+            
+            max = array.pop();
+            
+            return max;
+    }
+    ////
+    ////function myMin()
+    ////{
+    ////    
+    ////}
+    //
+    var number, realBase, string, stop, max1, array1 = [], array2 = [];
+    
+    do {
+        
+        number = getNumber(number);
+        
+        realBase = getBase(realBase);
+        
+        buildArray(array1, number);
+       
+        array2 = baseConversion(number, realBase);
+        string = reverseArray(array2);
+        
+        alert("Base 10 number: " + number + " is " + string + " in octal ");
+        
+        
+        stop = prompt("Enter s to stop");
+        
+        if (stop == "s" || stop == "S") {
+            break;
+        }  
+    } while (true);
+    
+    alert(array1);
+    max1 = myMax(array1);
+    alert(max1);
+    
+    
+    
+    
+    
+
+    
+</script>
+
+
+</body>
+</html>
